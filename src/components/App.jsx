@@ -1,7 +1,8 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
+import { Box } from './Box';
 
-import { Form } from './Form/Form';
+import { ContactForm } from './Form/Form';
 import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactsList/ContactList';
 
@@ -66,14 +67,17 @@ export class App extends Component {
     const contactsToShow = this.getFilteredContacts();
 
     return (
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-        }}
+      <Box
+        display="flex"
+        flexDirection="column"
+        gridGap={10}
+        width={[1 / 2]}
+        ml={'auto'}
+        mr={'auto'}
+        p={20}
       >
         <h1>Phonebook</h1>
-        <Form onSubmit={this.addContact} />
+        <ContactForm onSubmit={this.addContact} />
         {this.state.contacts.length ? (
           <>
             <h2>Contacts</h2>
@@ -89,7 +93,7 @@ export class App extends Component {
         ) : (
           <h2>No contacts yet</h2>
         )}
-      </div>
+      </Box>
     );
   }
 }
