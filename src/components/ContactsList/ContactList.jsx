@@ -1,16 +1,25 @@
 import PropTypes from 'prop-types';
+import { Box } from 'components/Box/Box';
+import { List, Button } from './ContactList.styled';
 
 export const ContactList = ({ contacts, onDeleteContact }) => (
-  <ul>
+  <List>
     {contacts.map(({ id, name, number }) => (
       <li key={id}>
-        <p>
-          {name}: {number}
-        </p>
-        <button onClick={() => onDeleteContact(id)}>Delete</button>
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
+          width={350}
+        >
+          <p>
+            {name}: {number}
+          </p>
+          <Button onClick={() => onDeleteContact(id)}>Delete</Button>
+        </Box>
       </li>
     ))}
-  </ul>
+  </List>
 );
 
 ContactList.propTypes = {
