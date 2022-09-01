@@ -1,6 +1,8 @@
-// import PropTypes from 'prop-types';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import PropTypes from 'prop-types';
+import { Formik, Form, ErrorMessage } from 'formik';
 import * as yup from 'yup';
+import { Box } from 'components/Box/Box';
+import { Input, Button } from './Form.styled';
 
 const schema = yup.object().shape({
   name: yup
@@ -9,14 +11,14 @@ const schema = yup.object().shape({
       /(^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$)/,
       "Name may contain only letters, apostrophe, dash and spaces. For example, 'Adrian', 'Jacob Mercer', 'Charles de Batz de Castelmore d'Artagnan'"
     )
-    .required('Add a name, please'),
+    .required('Add the name, please'),
   number: yup
     .string()
     .matches(
       /(\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9})/,
       'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +'
     )
-    .required('Add phone number, please'),
+    .required('Add the phone number, please'),
 });
 
 export const ContactForm = ({ onSubmit }) => {
@@ -26,8 +28,7 @@ export const ContactForm = ({ onSubmit }) => {
   };
 
   const handleSubmit = (values, { resetForm }) => {
-    onSubmit(initialValues);
-    console.log(values);
+    onSubmit(values);
     resetForm();
   };
 
@@ -39,19 +40,23 @@ export const ContactForm = ({ onSubmit }) => {
     >
       <Form>
         <label htmlFor="name">Name</label>
-        <Field name="name" />
-        <ErrorMessage name="name" />
+        <Box display="flex" alignItems="baseline" gridGap={10}>
+          <Input name="name" id="name" />
+          <ErrorMessage name="name" />
+        </Box>
 
         <label htmlFor="number">Number</label>
-        <Field name="number" />
-        <ErrorMessage name="nuber" />
+        <Box display="flex" alignItems="baseline" gridGap={10}>
+          <Input name="number" />
+          <ErrorMessage name="number" id="number" />
+        </Box>
 
-        <button type="submit">Add contact</button>
+        <Button type="submit">Add contact</Button>
       </Form>
     </Formik>
   );
 };
 
-// Form.propTypes = {
-//   onSubmit: PropTypes.func.isRequired,
-// };
+ContactForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
