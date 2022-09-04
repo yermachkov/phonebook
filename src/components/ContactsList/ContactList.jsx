@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { Box } from 'components/Box/Box';
-import { List, Button } from './ContactList.styled';
+import { List } from './ContactList.styled';
+import { Contact } from './Contact/Contact';
 
 export const ContactList = ({ contacts, onDeleteContact }) => (
   <List>
@@ -12,10 +13,12 @@ export const ContactList = ({ contacts, onDeleteContact }) => (
           alignItems="center"
           width={350}
         >
-          <p>
-            {name}: {number}
-          </p>
-          <Button onClick={() => onDeleteContact(id)}>Delete</Button>
+          <Contact
+            id={id}
+            name={name}
+            number={number}
+            onDeleteContact={onDeleteContact}
+          />
         </Box>
       </li>
     ))}
