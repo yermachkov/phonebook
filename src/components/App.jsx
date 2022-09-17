@@ -102,7 +102,7 @@ export class App extends Component {
             />
           </>
         ) : (
-          <h2>No contacts yet</h2>
+          <h2>No contacts yet. Fill the fields to add some.</h2>
         )}
       </Box>
     );
