@@ -59,12 +59,11 @@ export class App extends Component {
   };
 
   componentDidMount() {
-    const contacts = localStorage.getItem('Contacts');
-    const parsedContacts = JSON.parse(contacts);
-
-    if (parsedContacts) {
-      this.setState({ contacts: parsedContacts });
-    }
+    // const contacts = localStorage.getItem('Contacts');
+    // const parsedContacts = JSON.parse(contacts);
+    // if (parsedContacts) {
+    //   this.setState({ contacts: parsedContacts });
+    // }
   }
 
   componentDidUpdate(prevProps, prevState) {
