@@ -1,4 +1,4 @@
-import { getContacts } from '../redux/contactsSlice';
+import { selectContacts } from 'redux/selectors';
 import { Box } from './Box/Box';
 import { ContactForm } from './Form/Form';
 import { Filter } from './Filter/Filter';
@@ -6,7 +6,7 @@ import { ContactList } from './ContactsList/ContactList';
 import { useSelector } from 'react-redux';
 
 export const App = () => {
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
 
   return (
     <Box

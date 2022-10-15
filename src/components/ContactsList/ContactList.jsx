@@ -1,12 +1,12 @@
 import { Box } from 'components/Box/Box';
 import { List } from './ContactList.styled';
 import { ContactItem } from '../ContactItem/ContactItem';
-import { getContacts, getFilter } from 'redux/contactsSlice';
+import { selectContacts, selectFilter } from 'redux/selectors';
 import { useSelector } from 'react-redux';
 
 export const ContactList = () => {
-  const contacts = useSelector(getContacts);
-  const filter = useSelector(getFilter);
+  const contacts = useSelector(selectContacts);
+  const filter = useSelector(selectFilter);
 
   const visibleContacts = contacts.filter(contact =>
     contact.name.toLowerCase().includes(filter)
